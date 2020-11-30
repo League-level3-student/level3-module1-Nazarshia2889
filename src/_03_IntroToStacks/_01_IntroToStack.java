@@ -9,14 +9,33 @@ public class _01_IntroToStack {
 	public static void main(String[] args) {
 		//1. Create a Stack of Doubles
 		//   Don't forget to import the Stack class
-		
+		Stack<Double> doubles = new Stack<Double>();
+		Random rand = new Random();
 		//2. Use a loop to push 100 random doubles between 0 and 100 to the Stack.
-		
+		for(int i = 0;i<100;i++) {
+			 double x = 0 + (100-0) * rand.nextDouble();
+			 doubles.push(x);
+		}
 		//3. Ask the user to enter in two numbers between 0 and 100, inclusive. 
-		
+		String answerOne = JOptionPane.showInputDialog(null, "Enter a number between 0 and 100: ");
+		String answerTwo = JOptionPane.showInputDialog(null, "Enter another number betweek 0 and 100: ");
+		double aOne = Double.parseDouble(answerOne);
+		double aTwo = Double.parseDouble(answerTwo);
 		//4. Pop all the elements off of the Stack. Every time a double is popped that is
 		//   between the two numbers entered by the user, print it to the screen.
-		
+		 while(doubles.size() > 0) {
+			double y = doubles.pop();
+			if(aOne < aTwo) {
+				if(aOne <= y && y <= aTwo) {
+				System.out.println(y);
+				}
+			}
+			else {
+				if(aTwo <= y && y <= aOne) {
+					System.out.println(y);
+				}
+			}
+		}
 		
 		//   EXAMPLE:
 		//   NUM 1: 65
