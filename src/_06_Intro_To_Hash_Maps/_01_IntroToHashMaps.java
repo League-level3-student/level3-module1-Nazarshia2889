@@ -1,6 +1,8 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class _01_IntroToHashMaps {
 	public static void main(String[] args) {

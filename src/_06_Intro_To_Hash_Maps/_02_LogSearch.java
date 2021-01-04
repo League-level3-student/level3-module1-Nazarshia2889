@@ -43,11 +43,13 @@ public class _02_LogSearch implements ActionListener {
 	JButton addEntry = new JButton();
 	JButton search = new JButton();
 	JButton viewList = new JButton();
+	JButton removeEntry = new JButton();
 	
-	HashMap<Integer, String> logSearch = new HashMap<Integer, String>();
+	HashMap<Integer, String> hm = new HashMap<Integer, String>();
 
 	public static void main(String[] args) {
-		
+		_02_LogSearch ls = new _02_LogSearch();
+		ls.run();
 	}
 	
 	void run() {
@@ -56,12 +58,20 @@ public class _02_LogSearch implements ActionListener {
 		frame.add(panel);
 		panel.add(addEntry);
 		panel.add(search);
-		panel.add(viewList);
+		panel.add(viewList); 
+		panel.add(removeEntry);
 		
 		addEntry.addActionListener(this);
 		search.addActionListener(this);
 		viewList.addActionListener(this);
+		removeEntry.addActionListener(this);
 		
+		addEntry.setText("Add an Entry"); 
+		search.setText("Search for a person"); 
+		viewList.setText("View the list of people");
+		removeEntry.setText("Remove an entry from the list");
+		
+		frame.pack();
 	}
 
 	@Override
@@ -73,7 +83,33 @@ public class _02_LogSearch implements ActionListener {
 			String ID = JOptionPane.showInputDialog(null, "Enter an ID number: ");
 			int identification = Integer.parseInt(ID);
 			String name = JOptionPane.showInputDialog(null, "Enter the name: ");
-			logSearch.put(identification, name);
+			hm.put(identification, name);
+		}
+		else if(buttonPressed == search){
+			String s = JOptionPane.showInputDialog(null, "Enter an ID number to look for: "); 
+			int lookup = Integer.parseInt(s);
+			if(hm.containsKey(lookup) == true) {
+				JOptionPane.showMessageDialog(null, "The person at ID #" + lookup + " is named " + hm.get(lookup));
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "This user does not exist");
+			}
+		}
+		else if(buttonPressed == viewList) {
+			for(int a : hm.keySet()) {
+				JOptionPane.showMessageDialog(null, "ID: " + a + "  Name: " + hm.get(a));
+			}
+		}
+		else if(buttonPressed == removeEntry) {
+			String s = JOptionPane.showInputDialog(null, "Enter an ID number to remove from the list: ");
+			int lookup = Integer.parseInt(s);
+			if(hm.containsKey(lookup) == true) {
+				hm.remove(lookup);
+				JOptionPane.showMessageDialog(null, "The entry has been removed");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "This user does not exist");
+			}
 		}
 		
 	}
