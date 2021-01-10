@@ -18,7 +18,7 @@ public class Checkpoint2 {
 			sum += x;
 		}
 		
-		JOptionPane.showMessageDialog(null, "The total sum of all the number is: " + sum);
+		JOptionPane.showMessageDialog(null, "The total sum of all the numbers is: " + sum);
 		
 	}
 
